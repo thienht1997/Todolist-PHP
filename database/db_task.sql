@@ -11,9 +11,9 @@ CREATE TABLE `task` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `task` (`task_id`, `task`, `status`) VALUES
-(1, 'Check Errors', 'Done'),
-(4, 'Remove Bugs', ''),
-(5, 'Need Improvements', '');
+(1, 'Check Errors', 'Complete'),
+(4, 'Remove Bugs', 'Planning'),
+(5, 'Need Improvements', 'Doing');
 
 ALTER TABLE `task`
   ADD PRIMARY KEY (`task_id`);
@@ -24,4 +24,6 @@ ALTER TABLE `task`
 ALTER TABLE `task`
   CHANGE `task_id` `id` INT(11) NOT NULL AUTO_INCREMENT;
 
-ALTER TABLE `task` ADD `start_date` DATE NOT NULL AFTER `status`, ADD `end_date` DATE NOT NULL AFTER `start_date`;
+ALTER TABLE `task` 
+  ADD `start_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `status`, 
+  ADD `end_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `start_date`;
