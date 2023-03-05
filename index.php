@@ -117,6 +117,12 @@ if (isset($_SESSION['success'])) {
 	<?php
 	$query = $conn->query("SELECT * FROM `task` ORDER BY `id` ASC");
 	while ($fetch = $query->fetch_array()) {
+		if(!$taskId){
+			unset($task);
+			unset($start_date);
+			unset($end_date);
+			unset($status);
+		}
 	?>
 		<!-- Update Modal -->
 		<div class="modal fade" id="updateModal<?php echo $fetch['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel<?php echo $fetch['id']; ?>">
